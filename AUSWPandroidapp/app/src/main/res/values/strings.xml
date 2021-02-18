@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AUSWP Android App</string>
+    <string name="home">Home</string>
+    <string name="committee">Committee</string>
+    <string name="events">Events</string>
+    <string name="tracker">Tracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
 </resources>

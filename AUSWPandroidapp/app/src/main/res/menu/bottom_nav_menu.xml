@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/navigation_Committee"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/committee" />
+    <item
+        android:id="@+id/navigation_Events"
+        android:icon="@drawable/ic_baseline_event_24"
+        android:title="@string/events" />
+    <item
+        android:id="@+id/navigation_Tracker"
+        android:icon="@drawable/ic_baseline_track_changes_24"
+        android:title="@string/tracker" />
 </menu>

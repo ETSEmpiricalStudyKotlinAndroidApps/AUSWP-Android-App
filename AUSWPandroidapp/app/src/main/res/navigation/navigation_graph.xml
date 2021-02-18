@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/navigation_home">
 
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.home.HomeFragment"
+        android:label="@string/home_fragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_Committee"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.committee.committeeFragment"
+        android:label="fragment_committee"
+        tools:layout="@layout/fragment_committee" />
+    <fragment
+        android:id="@+id/navigation_Events"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" />
+    <fragment
+        android:id="@+id/navigation_Tracker"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.TrackerFragment"
+        android:label="fragment_tracker"
+        tools:layout="@layout/fragment_tracker" />
 </navigation>
