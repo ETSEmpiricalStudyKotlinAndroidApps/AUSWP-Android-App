@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,6 +24,18 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
+
+        val drawer = binding.drawerLayout
+        val toggle = ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolbar,
+                R.string.nav_open_drawer,
+                R.string.nav_close_drawer
+        )
+
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
 
         val navView = binding.bottomNavView
       val navController = findNavController(R.id.nav_host_fragment)
