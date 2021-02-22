@@ -8,21 +8,46 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.home.HomeFragment"
-        android:label="@string/home_fragment"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_Committee"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.committee.committeeFragment"
-        android:label="fragment_committee"
+        android:label="@string/committee"
         tools:layout="@layout/fragment_committee" />
     <fragment
         android:id="@+id/navigation_Events"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment"
-        android:label="fragment_events"
+        android:label="@string/events"
         tools:layout="@layout/fragment_events" />
     <fragment
         android:id="@+id/navigation_Tracker"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.TrackerFragment"
-        android:label="fragment_tracker"
-        tools:layout="@layout/fragment_tracker" />
+        android:label="@string/tracker"
+        tools:layout="@layout/fragment_tracker">
+        <action
+            android:id="@+id/action_navigation_Tracker_to_setFragment"
+            app:destination="@id/setFragment" />
+        <action
+            android:id="@+id/action_navigation_Tracker_to_workoutFragment"
+            app:destination="@id/workoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.workoutFragment"
+        android:label="@string/workout"
+        tools:layout="@layout/fragment_workout">
+        <action
+            android:id="@+id/action_workoutFragment_to_addWorkoutFragment"
+            app:destination="@id/addWorkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.setFragment"
+        android:label="@string/Coaching_centre" />
+    <fragment
+        android:id="@+id/addWorkoutFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.addWorkoutFragment"
+        android:label="@string/add_Workout"
+        tools:layout="@layout/fragment_add_workout" />
 </navigation>

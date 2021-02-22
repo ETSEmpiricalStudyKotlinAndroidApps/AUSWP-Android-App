@@ -12,4 +12,42 @@
     <string name="nav_help">Help</string>
     <string name="nav_open_drawer">Open</string>
     <string name="nav_close_drawer">Close</string>
+    <string name="Welcome">The Official home of all things AUSWP</string>
+    <string name="Next_Event">Next Event</string>
+    <string name="water_polo_training">Water Polo Training</string>
+    <string name="time">19:45-20:45</string>
+    <string name="date">27/02/2021</string>
+    <string name="location">Sports Centre Pool</string>
+    <string name="view_Event">View Event</string>
+    <string name="tracker_inf">Access the latest sets and training advice from our coaches or use the workout tracker to log data from your latest session</string>
+    <string name="Sets">View the latest sets from the coaches</string>
+    <string name="log_workout">Log Your Workout</string>
+    <string name="dateAct">Enter Date and Activity</string>
+    <string name="ActStats">Enter Activity Stats</string>
+    <string name="swim_sets">Swimming Sets</string>
+    <string name="wp_tips">Water Polo Tips</string>
+    <string name="example_swim">Warm Up</string>
+    <string name="set">4x50 Free  2x100 Kick</string>
+    <string name="set_main">Main Set</string>
+    <string name="main_set">16x25 Sprint 4x100 IM</string>
+    <string name="tip1_wp">Don\'t lean back when taking a shot</string>
+    <string name="tip2_wp">Use Egg Beater to aid treading water</string>
+    <string name="tip3_wp">Make use of subs during games</string>
+    <string name="date_text">Date</string>
+    <string name="event_text">Events</string>
+    <string name="day_one">01 MON</string>
+    <string name="day_2">02 TUE</string>
+    <string name="day_3">03 WED</string>
+    <string name="swim_training">Swim Training</string>
+    <string name="time2swim">07:15 - 08:15</string>
+    <string name="day_4">06 SAT</string>
+    <string name="name">Callum Binner</string>
+    <string name="email">Crb20@aber.ac.uk</string>
+
+
+    <string name="Coaching_centre">Coaching Centre</string>
+
+    <string name="workout">Workout Tracker</string>
+    <string name="add_Workout">Add Workout</string>
+
 </resources>

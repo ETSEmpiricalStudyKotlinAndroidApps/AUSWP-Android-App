@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -9,11 +10,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.ActivityMainBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ToggleState {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var toggle: ActionBarDrawerToggle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val drawer = binding.drawerLayout
-        val toggle = ActionBarDrawerToggle(
+        toggle = ActionBarDrawerToggle(
                 this,
                 drawer,
                 toolbar,
@@ -37,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        toggle.toolbarNavigationClickListener = View.OnClickListener {
+            onBackPressed()
+        }
+
         val navView = binding.bottomNavView
       val navController = findNavController(R.id.nav_host_fragment)
 
@@ -46,6 +56,20 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
-    
+
+    override fun setNavigationDrawer(isEnabled: Boolean){
+        if (isEnabled){
+            toggle.isDrawerIndicatorEnabled = true
+        } else {
+            toggle.isDrawerIndicatorEnabled = false
+
+            toggle.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
+        }
+        toggle.syncState()
+
     }
+
+
+
+}
 

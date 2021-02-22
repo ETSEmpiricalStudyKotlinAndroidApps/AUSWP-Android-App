@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrackerFragment">
+    tools:context="ui.tracker.TrackerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <View
+        android:id="@+id/sets_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="150dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tracker_info"
+        android:clickable="true"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tracker_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/tracker_inf"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="102dp"
+        android:layout_height="94dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_baseline_assignment_24"
+        app:layout_constraintBottom_toBottomOf="@+id/sets_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sets_view"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+        android:id="@+id/sets_Text"
+        android:layout_width="143dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="48dp"
+        android:text="@string/Sets"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sets_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sets_view"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <View
+        android:id="@+id/tracker_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sets_view"
+        android:clickable="true"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="100dp"
+        android:layout_height="114dp"
+        android:layout_marginEnd="40dp"
+        android:src="@drawable/ic_outline_note_add_24"
+        app:layout_constraintBottom_toBottomOf="@+id/tracker_view"
+        app:layout_constraintEnd_toEndOf="@+id/tracker_view"
+        app:layout_constraintTop_toTopOf="@+id/tracker_view"
+        app:layout_constraintVertical_bias="0.527" />
+
+    <TextView
+        android:id="@+id/workout_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:text="@string/log_workout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tracker_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tracker_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
