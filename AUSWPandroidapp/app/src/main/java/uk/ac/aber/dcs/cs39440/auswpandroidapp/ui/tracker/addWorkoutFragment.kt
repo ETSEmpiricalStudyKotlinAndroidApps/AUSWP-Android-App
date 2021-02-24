@@ -25,8 +25,12 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val parent = requireActivity() as ToggleState
+        parent.setNavigationDrawer(false)
         backbuttonpress()
         addWorkoutFragmentBinding = FragmentAddWorkoutBinding.inflate(inflater,container,false)
+
+
 
         val botNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_nav_view)
         botNav.isVisible = false
@@ -70,8 +74,7 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         val botNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_nav_view)
         botNav.isVisible = true
 
-        val parent = requireActivity() as ToggleState
-        parent.setNavigationDrawer(true)
+
 
         super.onDestroyView()
     }
