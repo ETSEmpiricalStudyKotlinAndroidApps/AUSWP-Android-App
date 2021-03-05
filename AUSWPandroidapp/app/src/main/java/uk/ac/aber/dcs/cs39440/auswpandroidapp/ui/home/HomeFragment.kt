@@ -13,6 +13,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentHomeBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.Event
 import kotlin.String as String
 
 private const val TAG = "My Activity"
@@ -33,15 +34,21 @@ class HomeFragment : Fragment() {
         homeFragmentBinding = FragmentHomeBinding.inflate(inflater,container,false)
 
         val texter = homeFragmentBinding.testTextView
+        val time = homeFragmentBinding.timeTextView
+        val location = homeFragmentBinding.locationTextView
+        val date = homeFragmentBinding.dateTextView
         
-       database = Firebase.database.reference.child("Events")
+       database = Firebase.database.reference.child("Events/Event1")
 
 
 
         val postListener = object: ValueEventListener{
             override fun onDataChange(datasnapshot: DataSnapshot) {
-                val post = datasnapshot.getValue()
-                texter.text = post.toString()
+                val post = datasnapshot.getValue(Event::class.java)
+                texter.text = post?.Title
+                time.text = post?.Time
+                location.text = post?.Location
+                date.text = post?.Date
                 Log.d(TAG, "Value is: $post")
             }
 
