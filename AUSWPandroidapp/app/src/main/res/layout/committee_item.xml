@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:id="@+id/committeeCard"
-
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="275dp"
+    android:id="@+id/committeeCard"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+
     android:padding="4dp"
     android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/commiteeImageView"
+            android:id="@+id/committeeImageView"
             android:layout_width="match_parent"
             android:layout_height="190dp"
+            android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/committeeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:layout_alignStart="@+id/commiteeImageView"
-            android:layout_below="@id/commiteeImageView"
+            android:layout_alignStart="@+id/committeeImageView"
+            android:layout_below="@id/committeeImageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commiteeImageView"/>
+            app:layout_constraintTop_toBottomOf="@id/committeeImageView"/>
 
         <TextView
             android:id="@+id/committeePosition"

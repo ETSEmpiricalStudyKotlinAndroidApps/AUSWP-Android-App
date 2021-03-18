@@ -66,7 +66,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Joe",
                 "President",
             "jod66@aber.ac.uk",
-                "Joe1.png"
+                "joe1.png"
             )
 
             val Treasurer = Committee(
@@ -82,7 +82,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Isaac",
                 "Men's Water Polo Captain",
                 "isd8@aber.ac.uk",
-                "Isaac1.png"
+                "isaac1.png"
             )
 
             val WWPC = Committee(
@@ -90,7 +90,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Line",
             "Woman's Water Polo Captain",
             "lim41@aber.ac.uk",
-                "Line1.png"
+                "line1.png"
             )
 
             val SwimCap = Committee(
@@ -98,7 +98,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Rachel",
                 "Swim Captain",
             "raj32@aber.ac.uk",
-                "Rachel1.png"
+                "rachel1.png"
             )
 
             val SwimCoach = Committee(
@@ -106,7 +106,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Rebecca",
                 "Swim Coach",
                 "rhr18@aber.ac.uk",
-                "Rebecca1.png"
+                "rebecca1.png"
             )
 
             val socsec1 = Committee(
@@ -114,7 +114,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Heidi",
                 "Social Sec",
             "heb35@aber.ac.uk",
-                "Heidi1.png"
+                "heidi1.png"
             )
 
             val socsec2 = Committee(
@@ -122,7 +122,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 "Miles",
                 "Social Sec",
                 "mid25@aber.ac.uk",
-                "Miles1.png"
+                "miles1.png"
             )
 
             val committeeList = mutableListOf(
