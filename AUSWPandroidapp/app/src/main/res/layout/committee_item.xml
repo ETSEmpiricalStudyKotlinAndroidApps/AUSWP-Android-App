@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kitten_small" />
+            />
 
         <TextView
             android:id="@+id/committeeName"
@@ -33,13 +33,23 @@
             app:layout_constraintTop_toBottomOf="@id/commiteeImageView"/>
 
         <TextView
+            android:id="@+id/committeePosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Position"
+            app:layout_constraintTop_toBottomOf="@id/committeeName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_below="@id/committeeName"/>
+
+
+        <TextView
             android:id="@+id/committeeEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
-            android:layout_alignStart="@id/committeeName"
-            android:layout_below="@id/committeeName"
-            app:layout_constraintTop_toBottomOf="@id/committeeName"
+            android:layout_alignStart="@id/committeePosition"
+            android:layout_below="@id/committeePosition"
+            app:layout_constraintTop_toBottomOf="@id/committeePosition"
             app:layout_constraintStart_toStartOf="parent"/>
 
 
