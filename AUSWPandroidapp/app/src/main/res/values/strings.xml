@@ -49,5 +49,7 @@
 
     <string name="workout">Workout Tracker</string>
     <string name="add_Workout">Add Workout</string>
+    <string name="Date">Enter Date</string>
+    <string name="Activity">Enter Activity Name</string>
 
 </resources>

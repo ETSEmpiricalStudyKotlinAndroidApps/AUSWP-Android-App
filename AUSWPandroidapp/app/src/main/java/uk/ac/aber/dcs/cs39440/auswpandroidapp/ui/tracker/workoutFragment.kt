@@ -7,24 +7,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentWorkoutBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.Workout
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.WorkoutViewModel
 
 
-private lateinit var workoutFragmentBinding: FragmentWorkoutBinding
+
+private const val GRID_COUNT = 1
 
 class workoutFragment : Fragment() {
+
+    private var oldWorkoutList: LiveData<List<Workout>>? = null
+    private lateinit var workoutRecyclerAdapter: WorkoutAdapter
+    private val workoutViewModel: WorkoutViewModel by viewModels()
+    private lateinit var workoutFragmentBinding: FragmentWorkoutBinding
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
-        backbuttonpress()
         workoutFragmentBinding = FragmentWorkoutBinding.inflate(inflater, container, false)
 
+        addWorkoutRecyclerView()
+        backbuttonpress()
 
 
         addFab()
@@ -55,6 +66,31 @@ class workoutFragment : Fragment() {
         }
     }
 
+    private fun addWorkoutRecyclerView(){
+        val listWorkout = workoutFragmentBinding.workoutList
+        listWorkout.setHasFixedSize(true)
+
+        val gridLayoutManager = GridLayoutManager(context, GRID_COUNT)
+        listWorkout.layoutManager = gridLayoutManager
+
+        workoutRecyclerAdapter = WorkoutAdapter(context)
+        listWorkout.adapter = workoutRecyclerAdapter
+
+        val workoutList = searchForWorkouts()
+
+        if (oldWorkoutList != workoutList){
+            oldWorkoutList?.removeObservers(viewLifecycleOwner)
+            oldWorkoutList = workoutList
+        }
+        if (!workoutList.hasObservers()){
+            workoutList.observe(viewLifecycleOwner) { workouts ->
+                workoutRecyclerAdapter.changeDataSet(workouts.toMutableList())
+            }
+        }
+
+
+    }
+
     override fun onDestroyView() {
 
 
@@ -64,6 +100,8 @@ class workoutFragment : Fragment() {
         super.onDestroyView()
     }
 
-
+private fun searchForWorkouts():LiveData<List<Workout>>{
+    return workoutViewModel.getWorkouts()
+}
 
 }

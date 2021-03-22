@@ -7,11 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentAddWorkoutBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.AddWorkoutViewModel
 
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.Workout
+
+private const val ACT_Key = "Activity Name"
+private const val DATE_Key = "Date"
+private const val DETS_KEY = "Activity Details"
 
 class addWorkoutFragment : Fragment(), View.OnClickListener {
 
@@ -19,6 +26,7 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
 
 
     private lateinit var addWorkoutFragmentBinding: FragmentAddWorkoutBinding
+    private val addWorkoutViewModel: AddWorkoutViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +63,17 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         parent.setNavigationDrawer(false)
     }
 
+    private fun restoreInstanceState(savedInstanceState: Bundle?){
+        savedInstanceState?.let {
+            val activityName = savedInstanceState.getString(ACT_Key,"")
+            if (activityName.isNotEmpty())addWorkoutFragmentBinding.nameEntry.setText(activityName)
+            val activityDate = savedInstanceState.getString(DATE_Key, "")
+            if (activityDate.isNotEmpty())addWorkoutFragmentBinding.dateEntry.setText(activityDate)
+            val activityStat = savedInstanceState.getString(DETS_KEY,"")
+            if (activityStat.isNotEmpty())addWorkoutFragmentBinding.userStats.setText(activityStat)
+        }
+    }
+
     override fun onClick(v: View?){
         when (v?.id){
             R.id.add -> {
@@ -67,7 +86,28 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
     }
 
     private fun insertWorkout(){
+        val workout = Workout(
+                0,
+                addWorkoutFragmentBinding.nameEntry.text.toString(),
+                addWorkoutFragmentBinding.dateEntry.text.toString(),
+                addWorkoutFragmentBinding.userStats.text.toString()
+        )
+        addWorkoutViewModel.insertWorkout(workout)
+
         findNavController().navigateUp()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (addWorkoutFragmentBinding.nameEntry.text.isNotEmpty())
+            outState.putString(ACT_Key, addWorkoutFragmentBinding.nameEntry.text.toString())
+        if (addWorkoutFragmentBinding.dateEntry.text.isNotEmpty())
+            outState.putString(DATE_Key,addWorkoutFragmentBinding.dateEntry.text.toString())
+        if (addWorkoutFragmentBinding.userStats.text.isNotEmpty())
+            outState.putString(DETS_KEY,addWorkoutFragmentBinding.userStats.text.toString())
+
+
+
+        super.onSaveInstanceState(outState)
     }
 
     override fun onDestroyView() {
