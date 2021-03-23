@@ -33,12 +33,13 @@ class HomeFragment : Fragment() {
 
         homeFragmentBinding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        val texter = homeFragmentBinding.testTextView
-        val time = homeFragmentBinding.timeTextView
-        val location = homeFragmentBinding.locationTextView
-        val date = homeFragmentBinding.dateTextView
-        
+        val texter = homeFragmentBinding.textView2
+        val time = homeFragmentBinding.textView3
+        val location = homeFragmentBinding.textView4
+        val date = homeFragmentBinding.textView5
+
        database = Firebase.database.reference.child("Events/Event1")
+
 
 
 
