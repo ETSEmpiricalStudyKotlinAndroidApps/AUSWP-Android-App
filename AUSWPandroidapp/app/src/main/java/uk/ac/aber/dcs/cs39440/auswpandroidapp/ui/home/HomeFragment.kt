@@ -38,26 +38,28 @@ class HomeFragment : Fragment() {
         val location = homeFragmentBinding.textView4
         val date = homeFragmentBinding.textView5
 
-       database = Firebase.database.reference.child("Events/Event1")
+       database = Firebase.database.reference.child("Events")
 
-
+    val myquery = database.limitToFirst(1)
 
 
         val postListener = object: ValueEventListener{
             override fun onDataChange(datasnapshot: DataSnapshot) {
-                val post = datasnapshot.getValue(Event::class.java)
-                texter.text = post?.Title
-                time.text = post?.Time
-                location.text = post?.Location
-                date.text = post?.Date
-                Log.d(TAG, "Value is: $post")
+                for (ds:DataSnapshot in datasnapshot.children){
+                    val post = ds.getValue(Event::class.java)
+                    texter.text = post?.Title
+                    time.text = post?.Time
+                    location.text = post?.Location
+                    date.text = post?.Date
+                    Log.d(TAG, "Value is: $post")
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         }
-        database.addValueEventListener(postListener)
+        myquery.addValueEventListener(postListener)
 
 
 
