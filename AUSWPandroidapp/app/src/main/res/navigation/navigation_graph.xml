@@ -19,7 +19,11 @@
         android:id="@+id/navigation_Events"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment"
         android:label="@string/events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_navigation_Events_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_Tracker"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.TrackerFragment"
@@ -50,4 +54,9 @@
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.addWorkoutFragment"
         android:label="@string/add_Workout"
         tools:layout="@layout/fragment_add_workout" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

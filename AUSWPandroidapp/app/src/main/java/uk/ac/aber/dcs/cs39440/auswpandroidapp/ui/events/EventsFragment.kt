@@ -1,11 +1,13 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -38,6 +40,7 @@ override fun onCreateView(
         setHasFixedSize(true)
         layoutManager = LinearLayoutManager(context)
         adapter = eventAdapter
+
     }
 
     return eventsFragmentBinding.root
@@ -54,23 +57,43 @@ override fun onCreateView(
     }
 
     private fun getAdapter(): FirebaseRecyclerAdapter<Event, EventViewHolder>{
+        var clickListener: View.OnClickListener? = null
         val options = FirebaseRecyclerOptions.Builder<Event>()
             .setLifecycleOwner(this)
             .setQuery(dataQuery, Event::class.java)
             .build()
 
         return object: FirebaseRecyclerAdapter<Event, EventViewHolder>(options){
+
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
+
                 return EventViewHolder(
                     layoutInflater.inflate(R.layout.event_item, parent, false)
                 )
             }
 
             override fun onBindViewHolder(holder: EventViewHolder, position: Int, model: Event) {
+
+                holder.itemView.setOnClickListener {
+                    Log.i("TAG","Logged ${holder.title.text} + ${holder.time.text} + ${holder.date.text} + ${holder.location.text}")
+
+                    val title = holder.title.text
+                    val date = holder.date.text
+                    val location = holder.location.text
+                    val time = holder.time.text
+
+                    val navController = findNavController()
+                    navController.navigate(R.id.action_navigation_Events_to_calendarFragment)
+                }
+
                 holder.bind(model)
             }
         }
+
+
     }
+
+
 }
 
 

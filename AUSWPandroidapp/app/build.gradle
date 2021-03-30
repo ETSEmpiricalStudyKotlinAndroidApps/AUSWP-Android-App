@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:19.7.0'
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
     implementation 'androidx.room:room-runtime:2.2.6'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     testImplementation 'junit:junit:4.13.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
