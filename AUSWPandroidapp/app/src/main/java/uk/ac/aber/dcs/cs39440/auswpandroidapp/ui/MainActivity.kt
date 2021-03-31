@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment
+
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.ActivityMainBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
@@ -55,6 +59,8 @@ class MainActivity : AppCompatActivity(), ToggleState {
       setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+
     }
 
     override fun setNavigationDrawer(isEnabled: Boolean){
@@ -68,6 +74,7 @@ class MainActivity : AppCompatActivity(), ToggleState {
         toggle.syncState()
 
     }
+
 
 
 

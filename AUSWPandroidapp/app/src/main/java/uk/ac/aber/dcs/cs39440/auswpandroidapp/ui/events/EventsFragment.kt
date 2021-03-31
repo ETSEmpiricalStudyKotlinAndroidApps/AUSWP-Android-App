@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,14 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment
+
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentEventsBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
 
 class EventsFragment : Fragment() {
 
@@ -22,6 +27,7 @@ class EventsFragment : Fragment() {
     private lateinit var eventAdapter: FirebaseRecyclerAdapter<Event, EventViewHolder>
     private var dataQuery = FirebaseDatabase.getInstance().reference.child("Events")
     private lateinit var eventsFragmentBinding: FragmentEventsBinding
+private lateinit var Smodel: SharedViewModel
 
 
 override fun onCreateView(
@@ -33,6 +39,7 @@ override fun onCreateView(
 
     eventAdapter = getAdapter()
 
+    Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
     val recyclerView = eventsFragmentBinding.recyclerView
     val linearLayoutManager = LinearLayoutManager(context)
@@ -73,14 +80,19 @@ override fun onCreateView(
             }
 
             override fun onBindViewHolder(holder: EventViewHolder, position: Int, model: Event) {
-
                 holder.itemView.setOnClickListener {
                     Log.i("TAG","Logged ${holder.title.text} + ${holder.time.text} + ${holder.date.text} + ${holder.location.text}")
+
+
 
                     val title = holder.title.text
                     val date = holder.date.text
                     val location = holder.location.text
                     val time = holder.time.text
+
+                  Smodel.sendMessage(title.toString(), date.toString(), location.toString(), time.toString())
+
+
 
                     val navController = findNavController()
                     navController.navigate(R.id.action_navigation_Events_to_calendarFragment)
