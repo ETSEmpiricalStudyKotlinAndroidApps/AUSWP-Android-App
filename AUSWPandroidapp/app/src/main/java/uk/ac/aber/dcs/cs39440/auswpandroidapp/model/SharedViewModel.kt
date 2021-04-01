@@ -4,9 +4,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel: ViewModel() {
-    val message = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
+    val date = MutableLiveData<String>()
+    val location = MutableLiveData<String>()
+    val time = MutableLiveData<String>()
 
-    fun sendMessage(title: String, date:String, location:String, time: String ){
-        message.value = title + date + location + time
+    fun sendTitle(text: String ){
+        title.value = text
+    }
+
+    fun sendDate(text: String){
+        date.value = text
+
+    }
+
+    fun sendLocation(text: String){
+        location.value = text
+    }
+
+    fun sendTime(text: String){
+        time.value = text
     }
 }

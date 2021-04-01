@@ -90,7 +90,10 @@ override fun onCreateView(
                     val location = holder.location.text
                     val time = holder.time.text
 
-                  Smodel.sendMessage(title.toString(), date.toString(), location.toString(), time.toString())
+                  Smodel.sendTitle(title.toString())
+                    Smodel.sendDate(date.toString())
+                    Smodel.sendLocation(location.toString())
+                    Smodel.sendTime(time.toString())
 
 
 

@@ -32,10 +32,17 @@ class CalendarFragment : Fragment() {
         val word4 = calendarBinding.timeText
 
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-        model.message.observe(viewLifecycleOwner,Observer{
+        model.title.observe(viewLifecycleOwner,Observer{
             word1.text = it
-            word2.text = it
+
+        })
+        model.location.observe(viewLifecycleOwner, Observer {
             word3.text = it
+        })
+        model.date.observe(viewLifecycleOwner, Observer {
+            word2.text = it
+        })
+        model.time.observe(viewLifecycleOwner,Observer{
             word4.text = it
         })
 
