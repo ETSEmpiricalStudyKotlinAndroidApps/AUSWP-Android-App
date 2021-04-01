@@ -1,6 +1,8 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +32,7 @@ class CalendarFragment : Fragment() {
         val word2 = calendarBinding.dateText
         val word3 = calendarBinding.locationText
         val word4 = calendarBinding.timeText
+        val button = calendarBinding.button
 
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         model.title.observe(viewLifecycleOwner,Observer{
@@ -47,7 +50,13 @@ class CalendarFragment : Fragment() {
         })
 
 
-
+        button.setOnClickListener {
+            val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
+                    .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
+              startActivity(insertCalendarIntent)
+        }
 
 
 
