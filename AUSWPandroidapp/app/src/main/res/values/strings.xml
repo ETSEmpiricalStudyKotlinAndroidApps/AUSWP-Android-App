@@ -52,5 +52,6 @@
     <string name="Date">Enter Date</string>
     <string name="Activity">Enter Activity Name</string>
     <string name="add_to_Cal">Add To Calendar</string>
+    <string name="event">Event</string>
 
 </resources>

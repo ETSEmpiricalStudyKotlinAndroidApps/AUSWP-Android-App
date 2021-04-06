@@ -55,6 +55,7 @@ class CalendarFragment : Fragment() {
                     .setData(CalendarContract.Events.CONTENT_URI)
                     .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
                     .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
+
               startActivity(insertCalendarIntent)
         }
 

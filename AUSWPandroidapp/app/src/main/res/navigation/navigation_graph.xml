@@ -57,6 +57,6 @@
     <fragment
         android:id="@+id/calendarFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment"
-        android:label="fragment_calendar"
+        android:label="@string/event"
         tools:layout="@layout/fragment_calendar" />
 </navigation>
