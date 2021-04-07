@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs39440.auswpandroidapp
+package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
 import android.content.Intent
 import android.os.Bundle

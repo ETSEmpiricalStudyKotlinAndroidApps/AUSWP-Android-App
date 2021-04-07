@@ -53,5 +53,6 @@
     <string name="Activity">Enter Activity Name</string>
     <string name="add_to_Cal">Add To Calendar</string>
     <string name="event">Event</string>
+    <string name="login">Login</string>
 
 </resources>

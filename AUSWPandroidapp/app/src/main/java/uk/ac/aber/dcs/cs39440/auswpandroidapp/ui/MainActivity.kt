@@ -1,26 +1,32 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment
+import com.google.android.material.navigation.NavigationView
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.CalendarFragment
 
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.ActivityMainBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), ToggleState {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var navigationView: NavigationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +34,8 @@ class MainActivity : AppCompatActivity(), ToggleState {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        navMenuItems()
 
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
@@ -73,6 +81,44 @@ class MainActivity : AppCompatActivity(), ToggleState {
         }
         toggle.syncState()
 
+    }
+
+    fun navMenuItems(){
+        navigationView = binding.navView
+        navigationView.setNavigationItemSelectedListener{item ->
+            when(item.itemId){
+                R.id.nav_help ->{
+                    val myIntent = Intent(Intent.ACTION_SEND)
+                    myIntent.data = Uri.parse("mailto:")
+                    myIntent.type = "text/html"
+                    myIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("callumbinner22@gmail.com"))
+                    myIntent.putExtra(Intent.EXTRA_SUBJECT,"Help")
+                    try {
+                        startActivity(Intent.createChooser(myIntent,"Choose Email Client"))
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                R.id.nav_feedback ->{
+                    val myIntent = Intent(Intent.ACTION_SEND)
+                    myIntent.data = Uri.parse("mailto:")
+                    myIntent.type = "text/html"
+                    myIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("callumbinner22@gmail.com"))
+                    myIntent.putExtra(Intent.EXTRA_SUBJECT,"Feedback")
+
+
+                    try {
+                        startActivity(Intent.createChooser(myIntent,"Choose Email Client"))
+                    }
+                    catch (e: Exception){
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+            false
+        }
     }
 
 
