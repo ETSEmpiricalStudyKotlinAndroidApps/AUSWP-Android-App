@@ -18,6 +18,7 @@ import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.CalendarFragment
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.ActivityMainBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.LoginFragment
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 import java.lang.Exception
 
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity(), ToggleState {
 
     }
 
-    fun navMenuItems(){
+    private fun navMenuItems(){
         navigationView = binding.navView
         navigationView.setNavigationItemSelectedListener{item ->
             when(item.itemId){
@@ -115,11 +116,20 @@ class MainActivity : AppCompatActivity(), ToggleState {
                         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                     }
 
+
+
+
+
+                }
+                R.id.nav_login ->{
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.loginFragment)
                 }
             }
             false
         }
     }
+
+
 
 
 

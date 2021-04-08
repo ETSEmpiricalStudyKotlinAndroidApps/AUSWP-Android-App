@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_Committee"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.committee.committeeFragment"
@@ -59,4 +63,9 @@
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment"
         android:label="@string/event"
         tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
