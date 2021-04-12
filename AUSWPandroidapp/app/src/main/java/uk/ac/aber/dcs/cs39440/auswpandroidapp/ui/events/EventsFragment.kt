@@ -1,3 +1,14 @@
+/**
+ * Represents the Events page. Contains a firebase UI
+ * recyclerView to display the data passed in from the
+ * firebase database.
+ * @author Callum Robert Binner
+ * @version 2
+ */
+
+
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
 import android.content.Intent

@@ -1,3 +1,11 @@
+/**
+ * The Repository class acting as a face to the underlying Room database
+ * @author Callum Robert Binner
+ * @version 1
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource.tracker
 
 import android.app.Application

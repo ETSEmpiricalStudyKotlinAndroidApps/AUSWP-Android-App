@@ -1,3 +1,15 @@
+/**
+ * Represents the committee page. Shows each committee
+ * member with their picture and contact information
+ * contained within a RecyclerView.
+ * Each grid can be clicked to launch an intent opening
+ * an email client to email each committee member.
+ * @author Callum Robert Binner
+ * @Version 2
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.committee
 
 import android.content.Intent

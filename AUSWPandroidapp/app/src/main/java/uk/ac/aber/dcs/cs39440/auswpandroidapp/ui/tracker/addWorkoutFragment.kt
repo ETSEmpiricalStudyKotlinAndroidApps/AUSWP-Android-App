@@ -1,3 +1,12 @@
+/**
+ * Represents the add workout page. Contains two edit text fields where
+ * users can enter their information. The button then allows them to store
+ * this data within the room database.
+ * @author Callum Robert Binner
+ * @version 2
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle

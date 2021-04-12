@@ -1,3 +1,10 @@
+/**
+ * Adapter to store list of workouts
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.content.Context

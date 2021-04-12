@@ -1,3 +1,12 @@
+/**
+ * This represents the home page. It contains a view
+ * which has text views that dynamically update to display
+ * the next event happening within the database.
+ * @author Callum Robert Binner
+ * @version 4
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.home
 
 import android.os.Bundle

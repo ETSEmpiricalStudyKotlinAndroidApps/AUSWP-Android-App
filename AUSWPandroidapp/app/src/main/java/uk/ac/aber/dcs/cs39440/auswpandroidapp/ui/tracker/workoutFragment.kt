@@ -1,3 +1,12 @@
+/**
+ * Represents workout page. Contains a recyclerView which
+ * displays all of the workouts stored by the user.
+ * @author Callum Robert Binner
+ * @version 2
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle

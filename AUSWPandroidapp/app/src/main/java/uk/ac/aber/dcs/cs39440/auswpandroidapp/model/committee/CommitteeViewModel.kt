@@ -1,3 +1,10 @@
+/**
+ * ViewModel for the CommitteeFragment. Caches live data object
+ * of list of committee. Communicates with repository.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.model.committee
 
 import android.app.Application

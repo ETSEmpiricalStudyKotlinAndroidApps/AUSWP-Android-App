@@ -1,3 +1,11 @@
+/**
+ * Room database implementation. Entity class used to define
+ * table.
+ * @author Callum Robert Binner
+ * @version 1
+ *
+ */
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource.tracker
 
 import android.content.Context

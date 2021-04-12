@@ -1,4 +1,14 @@
-package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
+/**
+ * Represents the page where the user is able to view the
+ * event details and add it to their personal calendar.
+ * Adding to calendar is done via a button press launching a
+ * calendar intent and the users calendar client.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
+
+package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,3 +1,9 @@
+/**
+ * Interface to allow access to underlying Room database for workouts
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker
 
 import androidx.lifecycle.LiveData

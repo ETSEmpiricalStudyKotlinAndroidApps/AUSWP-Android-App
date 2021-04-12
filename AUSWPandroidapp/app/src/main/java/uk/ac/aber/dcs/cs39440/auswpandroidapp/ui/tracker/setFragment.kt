@@ -1,3 +1,13 @@
+/**
+ * Represents the set page where users can view sets
+ * set by the coaches. Contains a 2 views with text
+ * views on top of them which are updated dynamically via the
+ * firebase database
+ * @author Callum Robert Binner
+ * @version 2
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle

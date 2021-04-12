@@ -1,3 +1,12 @@
+/**
+ * This is the main activity for the app.
+ * It activates the Toolbar, NavigationDrawer, BottomNavigationView
+ * and allows for the NavigationDrawer elements to be clickable.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
 import android.content.Intent
@@ -13,7 +22,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.CalendarFragment
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.CalendarFragment
 
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.ActivityMainBinding

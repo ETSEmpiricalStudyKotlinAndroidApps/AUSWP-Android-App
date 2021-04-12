@@ -1,3 +1,11 @@
+/**
+ * Adapter to store the list of committee members
+ * @author Callum Robert Binner
+ * @version 1
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.committee
 
 import android.content.Context

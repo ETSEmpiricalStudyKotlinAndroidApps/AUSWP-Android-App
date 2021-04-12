@@ -1,3 +1,13 @@
+/**
+ * ViewHolder which binds the data from the
+ * database to the elements making up the
+ * firebase recyclerView to allow them to
+ * be viewed within the app.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
 import android.view.View

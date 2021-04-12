@@ -1,3 +1,9 @@
+/**
+ * Represents a workout item as a Room entity.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker
 
 import androidx.annotation.NonNull

@@ -1,3 +1,13 @@
+/**
+ * Represents the tracker page where the user can click
+ * on two buttons to choose if they want to go to the coaching
+ * centre page or the workout page.
+ * @author Callum Robert Binner
+ * @version 2
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle

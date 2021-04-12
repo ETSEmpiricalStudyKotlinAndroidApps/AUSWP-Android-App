@@ -1,3 +1,13 @@
+/**
+ * Room database implementation. Entity class used to define
+ * table.
+ * Database is populated using function containing information on committee members
+ * @author Callum Robert Binner
+ * @version 1
+ *
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource.committee
 
 import android.content.Context

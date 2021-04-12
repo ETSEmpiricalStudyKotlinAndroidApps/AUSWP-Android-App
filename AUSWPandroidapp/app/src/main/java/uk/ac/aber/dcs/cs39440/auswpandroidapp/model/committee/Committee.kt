@@ -1,3 +1,10 @@
+/**
+ * Represents the committee as a room entity.
+ * @author Callum Robert Binner
+ * @version 1
+ */
+
+
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.model.committee
 
 import androidx.annotation.NonNull
