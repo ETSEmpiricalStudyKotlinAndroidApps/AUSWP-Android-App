@@ -15,19 +15,34 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-
+private lateinit var LoginFragmentBinding: FragmentLoginBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        LoginFragmentBinding = FragmentLoginBinding.inflate(inflater, container, false)
+
+
+        val register = LoginFragmentBinding.SignUp
+
+        register.isClickable
+
+        register.setOnClickListener {
+         val navController = findNavController()
+            navController.navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
+        return LoginFragmentBinding.root
     }
 
 

@@ -16,6 +16,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -132,6 +133,9 @@ class MainActivity : AppCompatActivity(), ToggleState {
                 }
                 R.id.nav_login ->{
                     findNavController(R.id.nav_host_fragment).navigate(R.id.loginFragment)
+
+                    val drawer = binding.drawerLayout
+                    drawer.closeDrawer(GravityCompat.START)
                 }
             }
             false

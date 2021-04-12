@@ -63,5 +63,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Not Registered? Sign Up here</string>
+    <string name="name_">Name</string>
+    <string name="createAcount">Sign Up</string>
+    <string name="register">Register Account</string>
 
 </resources>
