@@ -56,9 +56,8 @@
         tools:layout="@layout/fragment_add_workout" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.CalendarFragment"
-        android:label="@string/event"
-        tools:layout="@layout/fragment_calendar" />
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.CalendarFragment"
+        android:label="@string/event" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.LoginFragment"

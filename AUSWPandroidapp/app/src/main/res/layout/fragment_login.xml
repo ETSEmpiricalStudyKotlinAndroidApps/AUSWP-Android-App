@@ -75,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
+        android:clickable="true"
         android:text="@string/sign_in"
         android:textColor="@color/design_default_color_background"
         app:layout_constraintEnd_toEndOf="parent"

@@ -105,18 +105,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_Event"
-        android:layout_marginRight="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:clickable="true"
-        android:textColor="#0000ff"/>
-
-   
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
