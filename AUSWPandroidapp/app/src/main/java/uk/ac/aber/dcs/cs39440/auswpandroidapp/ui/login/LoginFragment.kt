@@ -1,11 +1,14 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login
 
+import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -13,10 +16,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -31,6 +36,7 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
     private lateinit var login : Button
     private lateinit var email : EditText
     private lateinit var password : EditText
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -47,6 +53,7 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
         email = LoginFragmentBinding.username
         password = LoginFragmentBinding.password
         login = LoginFragmentBinding.Login
+
 
         register.isClickable
         login.isClickable
@@ -66,6 +73,8 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
         private fun signin(){
             login.setOnClickListener {
                 signinUser(email.text.toString().trim(),password.text.toString().trim())
+                    hideKeyboard()
+                
                                     }
                 }
 
@@ -86,5 +95,14 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
                     }
                 }
         }
+
+    fun Context.hideKeyboard(view: View){
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken,0)
+    }
+
+    fun Fragment.hideKeyboard(){
+        view?.let{ activity?.hideKeyboard(it)}
+    }
     }
 
