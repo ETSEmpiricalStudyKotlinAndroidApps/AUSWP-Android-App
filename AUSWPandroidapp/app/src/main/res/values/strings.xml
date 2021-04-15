@@ -70,5 +70,10 @@
     <string name="register">Register Account</string>
     <string name="Logout">Logout</string>
     <string name="admin">Admin</string>
+    <string name="eventTitle">Event Title</string>
+    <string name="eventTime">Event Time</string>
+    <string name="eventDate">Event Date</string>
+    <string name="eventLocation">Event Location</string>
+    <string name="addEvent">Add Event</string>
 
 </resources>
