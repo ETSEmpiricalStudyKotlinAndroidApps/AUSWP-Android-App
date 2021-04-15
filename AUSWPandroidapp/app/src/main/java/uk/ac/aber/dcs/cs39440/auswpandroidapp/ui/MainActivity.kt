@@ -13,6 +13,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -99,6 +100,17 @@ checkUser()
         checkUser()
     }
 
+    override fun onPause() {
+        super.onPause()
+        checkUser()
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        checkUser()
+    }
+
+
     override fun setNavigationDrawer(isEnabled: Boolean){
         if (isEnabled){
             toggle.isDrawerIndicatorEnabled = true
@@ -158,6 +170,7 @@ checkUser()
                     FirebaseAuth.getInstance().signOut()
                     Toast.makeText(this, "User signed out", Toast.LENGTH_SHORT).show()
                     findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_home)
+
                 }
                 R.id.admin ->{
                     findNavController(R.id.nav_host_fragment).navigate(R.id.adminFragment)
@@ -171,36 +184,33 @@ checkUser()
 
 
 
-private fun checkUser(){
+    fun checkUser() {
 
-    navigationView = binding.navView
-
-
-    val logOut = navigationView.menu.findItem(R.id.nav_logOut)
-    val logIn =  navigationView.menu.findItem(R.id.nav_login)
-    val admin = navigationView.menu.findItem(R.id.admin)
+        navigationView = binding.navView
 
 
+        var logOut = navigationView.menu.findItem(R.id.nav_logOut)
+        var logIn = navigationView.menu.findItem(R.id.nav_login)
+        var admin = navigationView.menu.findItem(R.id.admin)
 
 
-
-            val user = FirebaseAuth.getInstance().currentUser
-            if (user !=null){
-                Toast.makeText(this, "User signed in", Toast.LENGTH_SHORT).show()
-                logOut.isVisible = true
-                logIn.isVisible = false
-                admin.isVisible = true
-            }else{
-                Toast.makeText(this,"User not signed in", Toast.LENGTH_SHORT).show()
-                logIn.isVisible = true
-                logOut.isVisible = false
-                admin.isVisible = false
-
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+           // Toast.makeText(this, "User signed in", Toast.LENGTH_SHORT).show()
+            logOut.isVisible = true
+            logIn.isVisible = false
+            admin.isVisible = true
+        } else {
+          //  Toast.makeText(this, "User not signed in", Toast.LENGTH_SHORT).show()
+            logIn.isVisible = true
+            logOut.isVisible = false
+            admin.isVisible = false
 
 
+        }
     }
+
 }
 
 
-}
 

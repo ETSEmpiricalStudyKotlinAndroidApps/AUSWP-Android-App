@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser
 
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentLoginBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.MainActivity
 
 class LoginFragment : Fragment() {
 

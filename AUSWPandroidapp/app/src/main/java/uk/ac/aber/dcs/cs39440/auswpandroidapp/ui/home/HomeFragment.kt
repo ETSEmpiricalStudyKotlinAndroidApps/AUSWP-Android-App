@@ -15,15 +15,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentHomeBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.MainActivity
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.Event
-import kotlin.String as String
 
 private const val TAG = "My Activity"
 
@@ -72,6 +69,8 @@ class HomeFragment : Fragment() {
 
 
 
+        (activity as MainActivity?)!!.checkUser()
+
         return homeFragmentBinding.root
 
 
@@ -81,5 +80,18 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity?)!!.checkUser()
+    }
 
-}
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity?)!!.checkUser()
+    }
+
+
+
+    }
+
+
