@@ -74,7 +74,7 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
             login.setOnClickListener {
                 signinUser(email.text.toString().trim(),password.text.toString().trim())
                     hideKeyboard()
-                
+
                                     }
                 }
 
@@ -85,7 +85,7 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful){
-                        Toast.makeText(context,"Welcome $email", Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(context,"Welcome $email", Toast.LENGTH_SHORT).show()
                         Log.d(TAG, "Sign in successful")
                         val navController = findNavController()
                         navController.navigate(R.id.navigation_home)

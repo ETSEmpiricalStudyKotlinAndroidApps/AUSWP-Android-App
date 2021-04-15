@@ -68,5 +68,7 @@
     <string name="name_">Name</string>
     <string name="createAcount">Sign Up</string>
     <string name="register">Register Account</string>
+    <string name="Logout">Logout</string>
+    <string name="admin">Admin</string>
 
 </resources>

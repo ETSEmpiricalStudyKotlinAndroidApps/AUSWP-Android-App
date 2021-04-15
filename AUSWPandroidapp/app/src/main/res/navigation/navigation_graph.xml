@@ -71,4 +71,9 @@
         android:id="@+id/registerFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.RegisterFragment"
         android:label="fragment_register" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.adminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>

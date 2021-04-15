@@ -7,6 +7,12 @@
             android:checked="true"
             android:icon="@drawable/ic_baseline_power_settings_new_24"
             android:title="@string/login"/>
+        <item
+            android:id="@+id/nav_logOut"
+            android:checked="true"
+            android:icon="@drawable/ic_baseline_logout_24"
+            android:title="@string/Logout"
+            android:visible="false"/>
 
 
     </group>
@@ -16,5 +22,9 @@
     <item android:id="@+id/nav_feedback"
         android:icon="@drawable/ic_baseline_feedback_24"
         android:title="@string/nav_feedback" />
+    <item android:id="@+id/admin"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/admin"
+        android:visible="false"/>
 
 </menu>

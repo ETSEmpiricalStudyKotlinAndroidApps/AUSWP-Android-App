@@ -14,15 +14,21 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.CalendarFragment
 
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
@@ -40,11 +46,17 @@ class MainActivity : AppCompatActivity(), ToggleState {
     private lateinit var navigationView: NavigationView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
+checkUser()
 
         navMenuItems()
 
@@ -80,6 +92,11 @@ class MainActivity : AppCompatActivity(), ToggleState {
 
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkUser()
     }
 
     override fun setNavigationDrawer(isEnabled: Boolean){
@@ -137,6 +154,16 @@ class MainActivity : AppCompatActivity(), ToggleState {
                     val drawer = binding.drawerLayout
                     drawer.closeDrawer(GravityCompat.START)
                 }
+                R.id.nav_logOut ->{
+                    FirebaseAuth.getInstance().signOut()
+                    Toast.makeText(this, "User signed out", Toast.LENGTH_SHORT).show()
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_home)
+                }
+                R.id.admin ->{
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.adminFragment)
+                    val drawer = binding.drawerLayout
+                    drawer.closeDrawer(GravityCompat.START)
+                }
             }
             false
         }
@@ -144,7 +171,35 @@ class MainActivity : AppCompatActivity(), ToggleState {
 
 
 
+private fun checkUser(){
 
+    navigationView = binding.navView
+
+
+    val logOut = navigationView.menu.findItem(R.id.nav_logOut)
+    val logIn =  navigationView.menu.findItem(R.id.nav_login)
+    val admin = navigationView.menu.findItem(R.id.admin)
+
+
+
+
+
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user !=null){
+                Toast.makeText(this, "User signed in", Toast.LENGTH_SHORT).show()
+                logOut.isVisible = true
+                logIn.isVisible = false
+                admin.isVisible = true
+            }else{
+                Toast.makeText(this,"User not signed in", Toast.LENGTH_SHORT).show()
+                logIn.isVisible = true
+                logOut.isVisible = false
+                admin.isVisible = false
+
+
+
+    }
+}
 
 
 }
