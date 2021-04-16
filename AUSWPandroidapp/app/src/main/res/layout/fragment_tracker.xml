@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tracker_info"
-        android:clickable="true"/>
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/tracker_info"
@@ -66,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sets_view"
-        android:clickable="true"/>
+        android:clickable="true" />
 
     <ImageView
         android:id="@+id/imageView4"

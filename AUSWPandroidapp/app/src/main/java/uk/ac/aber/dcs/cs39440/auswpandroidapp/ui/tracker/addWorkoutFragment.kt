@@ -10,19 +10,18 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentAddWorkoutBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.AddWorkoutViewModel
-
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.Workout
 
 private const val ACT_Key = "Activity Name"
@@ -32,21 +31,18 @@ private const val DETS_KEY = "Activity Details"
 class addWorkoutFragment : Fragment(), View.OnClickListener {
 
 
-
-
     private lateinit var addWorkoutFragmentBinding: FragmentAddWorkoutBinding
     private val addWorkoutViewModel: AddWorkoutViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val parent = requireActivity() as ToggleState
         parent.setNavigationDrawer(false)
         backbuttonpress()
-        addWorkoutFragmentBinding = FragmentAddWorkoutBinding.inflate(inflater,container,false)
-
+        addWorkoutFragmentBinding = FragmentAddWorkoutBinding.inflate(inflater, container, false)
 
 
         val botNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_nav_view)
@@ -59,32 +55,32 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         return addWorkoutFragmentBinding.root
     }
 
-    private fun backbuttonpress(){
+    private fun backbuttonpress() {
         val callback: OnBackPressedCallback =
-            object: OnBackPressedCallback(true){
-                override fun handleOnBackPressed() {
-                    findNavController().navigateUp()
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        findNavController().navigateUp()
+                    }
                 }
-            }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         val parent = requireActivity() as ToggleState
         parent.setNavigationDrawer(false)
     }
 
-    private fun restoreInstanceState(savedInstanceState: Bundle?){
+    private fun restoreInstanceState(savedInstanceState: Bundle?) {
         savedInstanceState?.let {
-            val activityName = savedInstanceState.getString(ACT_Key,"")
-            if (activityName.isNotEmpty())addWorkoutFragmentBinding.nameEntry.setText(activityName)
+            val activityName = savedInstanceState.getString(ACT_Key, "")
+            if (activityName.isNotEmpty()) addWorkoutFragmentBinding.nameEntry.setText(activityName)
             val activityDate = savedInstanceState.getString(DATE_Key, "")
-            if (activityDate.isNotEmpty())addWorkoutFragmentBinding.dateEntry.setText(activityDate)
-            val activityStat = savedInstanceState.getString(DETS_KEY,"")
-            if (activityStat.isNotEmpty())addWorkoutFragmentBinding.userStats.setText(activityStat)
+            if (activityDate.isNotEmpty()) addWorkoutFragmentBinding.dateEntry.setText(activityDate)
+            val activityStat = savedInstanceState.getString(DETS_KEY, "")
+            if (activityStat.isNotEmpty()) addWorkoutFragmentBinding.userStats.setText(activityStat)
         }
     }
 
-    override fun onClick(v: View?){
-        when (v?.id){
+    override fun onClick(v: View?) {
+        when (v?.id) {
             R.id.add -> {
                 insertWorkout()
             }
@@ -94,7 +90,7 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun insertWorkout(){
+    private fun insertWorkout() {
         val workout = Workout(
                 0,
                 addWorkoutFragmentBinding.nameEntry.text.toString(),
@@ -110,9 +106,9 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         if (addWorkoutFragmentBinding.nameEntry.text.isNotEmpty())
             outState.putString(ACT_Key, addWorkoutFragmentBinding.nameEntry.text.toString())
         if (addWorkoutFragmentBinding.dateEntry.text.isNotEmpty())
-            outState.putString(DATE_Key,addWorkoutFragmentBinding.dateEntry.text.toString())
+            outState.putString(DATE_Key, addWorkoutFragmentBinding.dateEntry.text.toString())
         if (addWorkoutFragmentBinding.userStats.text.isNotEmpty())
-            outState.putString(DETS_KEY,addWorkoutFragmentBinding.userStats.text.toString())
+            outState.putString(DETS_KEY, addWorkoutFragmentBinding.userStats.text.toString())
 
 
 
@@ -128,4 +124,4 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
         super.onDestroyView()
     }
 
-    }
+}

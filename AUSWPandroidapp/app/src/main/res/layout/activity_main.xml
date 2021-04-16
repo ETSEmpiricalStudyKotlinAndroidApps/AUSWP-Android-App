@@ -8,57 +8,57 @@
     tools:context=".ui.MainActivity"
     tools:menu="@menu/bottom_nav_menu">
 
-   <androidx.coordinatorlayout.widget.CoordinatorLayout
-       android:id="@+id/coordinator"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-      <com.google.android.material.appbar.AppBarLayout
-          android:id="@+id/appBarLayout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-         <androidx.appcompat.widget.Toolbar
-             android:id="@+id/toolbar"
-             android:layout_width="match_parent"
-             android:layout_height="?attr/actionBarSize"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
 
-             app:layout_scrollFlags="scroll|enterAlways"
-             app:title="@string/app_name" />
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="@string/app_name" />
 
-      </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-      <fragment
-          android:id="@+id/nav_host_fragment"
-          android:name="androidx.navigation.fragment.NavHostFragment"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-          app:defaultNavHost="true"
-          app:layout_behavior="@string/appbar_scrolling_view_behavior"
-          app:navGraph="@navigation/navigation_graph"
-          android:layout_marginBottom="?android:attr/actionBarSize"/>
+            app:defaultNavHost="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:navGraph="@navigation/navigation_graph"
+            android:layout_marginBottom="?android:attr/actionBarSize" />
 
-      <com.google.android.material.bottomnavigation.BottomNavigationView
-          android:id="@+id/bottom_nav_view"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_gravity="bottom"
-          android:windowSoftInputMode="adjustNothing"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:windowSoftInputMode="adjustNothing"
 
-          app:menu="@menu/bottom_nav_menu" />
+            app:menu="@menu/bottom_nav_menu" />
 
-   </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-   <com.google.android.material.navigation.NavigationView
-       android:id="@+id/nav_view"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:layout_gravity="start"
-       app:headerLayout="@layout/nav_header"
-       app:itemIconTint="@color/colorPrimaryDark"
-       app:itemTextColor="?android:textColorPrimary"
-       app:menu="@menu/menu_nav" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="?android:textColorPrimary"
+        app:menu="@menu/menu_nav" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

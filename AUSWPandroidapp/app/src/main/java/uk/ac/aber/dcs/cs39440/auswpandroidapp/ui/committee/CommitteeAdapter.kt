@@ -16,14 +16,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.committee.Committee
 import com.bumptech.glide.Glide
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.CommitteeItemBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.committee.Committee
 
-class CommitteeAdapter (
+class CommitteeAdapter(
     private val context: Context?,
-        ):
-RecyclerView.Adapter<CommitteeAdapter.ViewHolder>() {
+) :
+    RecyclerView.Adapter<CommitteeAdapter.ViewHolder>() {
     private var dataSet: MutableList<Committee> = mutableListOf()
     var clickListener: View.OnClickListener? = null
 
@@ -33,24 +33,20 @@ RecyclerView.Adapter<CommitteeAdapter.ViewHolder>() {
         val nameView: TextView,
         val positionView: TextView,
         val emailView: TextView
-    ) : RecyclerView.ViewHolder(itemView){
+    ) : RecyclerView.ViewHolder(itemView) {
 
         init {
             itemView.setOnClickListener(clickListener)
         }
 
-        fun bindDataSet(committee: Committee){
+        fun bindDataSet(committee: Committee) {
             nameView.text = committee.name
             positionView.text = committee.position
             emailView.text = committee.email
 
-                Glide.with(context!!)
-                    .load(Uri.parse("file:///android_asset/images/${committee.imagePath}"))
-                    .into(imageView)
-
-
-
-
+            Glide.with(context!!)
+                .load(Uri.parse("file:///android_asset/images/${committee.imagePath}"))
+                .into(imageView)
 
 
         }
@@ -59,7 +55,8 @@ RecyclerView.Adapter<CommitteeAdapter.ViewHolder>() {
     override fun getItemCount(): Int = dataSet.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommitteeAdapter.ViewHolder {
-        val committeeItemBinding = CommitteeItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        val committeeItemBinding =
+            CommitteeItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(
             committeeItemBinding.committeeCard,
             committeeItemBinding.committeeImageView,
@@ -69,11 +66,11 @@ RecyclerView.Adapter<CommitteeAdapter.ViewHolder>() {
         )
     }
 
-    override fun onBindViewHolder(holder:CommitteeAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CommitteeAdapter.ViewHolder, position: Int) {
         holder.bindDataSet(dataSet[position])
     }
 
-    fun changeDataSet(dataSet: MutableList<Committee>){
+    fun changeDataSet(dataSet: MutableList<Committee>) {
         this.dataSet = dataSet
         this.notifyDataSetChanged()
     }

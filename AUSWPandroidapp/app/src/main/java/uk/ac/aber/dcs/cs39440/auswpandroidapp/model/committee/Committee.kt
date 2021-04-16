@@ -13,12 +13,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "committee")
-data class Committee (
-        @PrimaryKey(autoGenerate = true)
-        @NonNull
-        var id:Int =0,
-        var name:String,
-        var position:String,
-        var email: String,
-        @ColumnInfo(name = "main_image_path")
-        var imagePath: String ="")
+data class Committee(
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    var id: Int = 0,
+    var name: String,
+    var position: String,
+    var email: String,
+    @ColumnInfo(name = "main_image_path")
+    var imagePath: String = ""
+)

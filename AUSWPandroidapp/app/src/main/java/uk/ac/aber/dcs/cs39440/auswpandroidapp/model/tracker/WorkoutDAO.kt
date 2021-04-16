@@ -13,16 +13,16 @@ import androidx.room.*
 @Dao
 interface WorkoutDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertSingleWorkout(workout:Workout)
+    fun insertSingleWorkout(workout: Workout)
 
     @Insert
-    fun insertMultipleWorkouts(workoutList:List<Workout>)
+    fun insertMultipleWorkouts(workoutList: List<Workout>)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateWorkout(workout: Workout)
 
     @Delete
-    fun DeleteWorkout(workout:Workout)
+    fun DeleteWorkout(workout: Workout)
 
     @Query("DELETE FROM workouts")
     fun deleteAllWorkouts()

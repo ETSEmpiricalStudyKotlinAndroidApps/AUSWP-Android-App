@@ -12,13 +12,13 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
@@ -29,9 +29,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentSetBinding
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.Event
 
 private const val TAG = "My Activity"
+
 class setFragment : Fragment() {
 
 
@@ -53,7 +53,7 @@ class setFragment : Fragment() {
         // Inflate the layout for this fragment
         backbuttonpress()
 
-        setFragmentBinding = FragmentSetBinding.inflate(inflater,container, false)
+        setFragmentBinding = FragmentSetBinding.inflate(inflater, container, false)
 
         val botNav: BottomNavigationView = requireActivity().findViewById(R.id.bottom_nav_view)
         botNav.isVisible = false
@@ -76,13 +76,13 @@ class setFragment : Fragment() {
         return setFragmentBinding.root
     }
 
-    private fun backbuttonpress(){
+    private fun backbuttonpress() {
         val callback: OnBackPressedCallback =
-                object: OnBackPressedCallback(true){
-                    override fun handleOnBackPressed() {
-                        findNavController().navigateUp()
-                    }
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigateUp()
                 }
+            }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         val parent = requireActivity() as ToggleState
@@ -99,13 +99,13 @@ class setFragment : Fragment() {
         super.onDestroyView()
     }
 
-    private fun addTips(){
-        val postListener = object: ValueEventListener {
+    private fun addTips() {
+        val postListener = object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val post = datasnapshot.getValue(tips::class.java)
                 tip1.text = post?.Tip1
                 tip2.text = post?.Tip2
-                tip3.text= post?.Tip3
+                tip3.text = post?.Tip3
 
                 Log.d(TAG, "Value is: $post")
             }
@@ -117,8 +117,8 @@ class setFragment : Fragment() {
         databaseTipRef.addValueEventListener(postListener)
     }
 
-    private fun addSets(){
-        val postListener = object: ValueEventListener {
+    private fun addSets() {
+        val postListener = object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 val post = datasnapshot.getValue(sets::class.java)
                 warmup.text = post?.Warmup

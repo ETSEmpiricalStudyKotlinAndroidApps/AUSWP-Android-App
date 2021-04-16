@@ -26,17 +26,17 @@ import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.committee.CommitteeDAO
 @Database(entities = [Committee::class], version = 1)
 
 
-abstract class CommitteeRoomDatabase: RoomDatabase() {
+abstract class CommitteeRoomDatabase : RoomDatabase() {
 
     abstract fun committeeDAO(): CommitteeDAO
 
     companion object {
-        private var instance:CommitteeRoomDatabase? = null
+        private var instance: CommitteeRoomDatabase? = null
         private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
-        fun getDatabase(context:Context):CommitteeRoomDatabase?{
-            synchronized(this){
-                if(instance == null){
+        fun getDatabase(context: Context): CommitteeRoomDatabase? {
+            synchronized(this) {
+                if (instance == null) {
                     instance =
                         Room.databaseBuilder<CommitteeRoomDatabase>(
                             context.applicationContext,
@@ -52,30 +52,31 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
             }
         }
 
-        private fun roomDatabaseCallback(context: Context):Callback{
-            return object : Callback(){
+        private fun roomDatabaseCallback(context: Context): Callback {
+            return object : Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
 
-                    coroutineScope.launch(Dispatchers.IO){
+                    coroutineScope.launch(Dispatchers.IO) {
                         populatedDatabase(context, getDatabase(context)!!)
                     }
                 }
             }
         }
 
-        val MIGRATION_1_2 = object:Migration(1,2){
+        val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 Log.d("Migrate", "Doing a migrate from V 1.0 to V 2.0")
             }
         }
-        private fun populatedDatabase(context: Context, instance: CommitteeRoomDatabase){
+
+        private fun populatedDatabase(context: Context, instance: CommitteeRoomDatabase) {
 
             val President = Committee(
                 0,
                 "Joe",
                 "President",
-            "jod66@aber.ac.uk",
+                "jod66@aber.ac.uk",
                 "joe1.png"
             )
 
@@ -98,8 +99,8 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
             val WWPC = Committee(
                 0,
                 "Line",
-            "Woman's Water Polo Captain",
-            "lim41@aber.ac.uk",
+                "Woman's Water Polo Captain",
+                "lim41@aber.ac.uk",
                 "line1.png"
             )
 
@@ -107,7 +108,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 0,
                 "Rachel",
                 "Swim Captain",
-            "raj32@aber.ac.uk",
+                "raj32@aber.ac.uk",
                 "rachel1.png"
             )
 
@@ -123,7 +124,7 @@ abstract class CommitteeRoomDatabase: RoomDatabase() {
                 0,
                 "Heidi",
                 "Social Sec",
-            "heb35@aber.ac.uk",
+                "heb35@aber.ac.uk",
                 "heidi1.png"
             )
 

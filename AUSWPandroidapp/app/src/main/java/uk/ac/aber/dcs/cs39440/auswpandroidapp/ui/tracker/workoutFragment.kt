@@ -10,22 +10,19 @@
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentWorkoutBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.Workout
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.WorkoutViewModel
-
 
 
 private const val GRID_COUNT = 1
@@ -38,8 +35,10 @@ class workoutFragment : Fragment() {
     private lateinit var workoutFragmentBinding: FragmentWorkoutBinding
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         workoutFragmentBinding = FragmentWorkoutBinding.inflate(inflater, container, false)
 
@@ -52,20 +51,20 @@ class workoutFragment : Fragment() {
         return workoutFragmentBinding.root
     }
 
-    private fun backbuttonpress(){
+    private fun backbuttonpress() {
         val callback: OnBackPressedCallback =
-                object: OnBackPressedCallback(true){
-                    override fun handleOnBackPressed() {
-                        findNavController().navigateUp()
-                    }
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigateUp()
                 }
+            }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         val parent = requireActivity() as ToggleState
         parent.setNavigationDrawer(false)
     }
 
-    private fun addFab(){
+    private fun addFab() {
 
         val fab = workoutFragmentBinding.addWords
 
@@ -75,7 +74,7 @@ class workoutFragment : Fragment() {
         }
     }
 
-    private fun addWorkoutRecyclerView(){
+    private fun addWorkoutRecyclerView() {
         val listWorkout = workoutFragmentBinding.workoutList
         listWorkout.setHasFixedSize(true)
 
@@ -87,11 +86,11 @@ class workoutFragment : Fragment() {
 
         val workoutList = searchForWorkouts()
 
-        if (oldWorkoutList != workoutList){
+        if (oldWorkoutList != workoutList) {
             oldWorkoutList?.removeObservers(viewLifecycleOwner)
             oldWorkoutList = workoutList
         }
-        if (!workoutList.hasObservers()){
+        if (!workoutList.hasObservers()) {
             workoutList.observe(viewLifecycleOwner) { workouts ->
                 workoutRecyclerAdapter.changeDataSet(workouts.toMutableList())
             }
@@ -109,8 +108,8 @@ class workoutFragment : Fragment() {
         super.onDestroyView()
     }
 
-private fun searchForWorkouts():LiveData<List<Workout>>{
-    return workoutViewModel.getWorkouts()
-}
+    private fun searchForWorkouts(): LiveData<List<Workout>> {
+        return workoutViewModel.getWorkouts()
+    }
 
 }

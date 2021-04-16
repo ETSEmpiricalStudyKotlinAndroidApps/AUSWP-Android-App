@@ -13,18 +13,16 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentCalendarBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventViewHolder
-import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
@@ -34,13 +32,15 @@ private lateinit var calendarBinding: FragmentCalendarBinding
 class CalendarFragment : Fragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
 
-        calendarBinding = FragmentCalendarBinding.inflate(inflater,container, false)
+        calendarBinding = FragmentCalendarBinding.inflate(inflater, container, false)
 
-backButtonPress()
+        backButtonPress()
 
         val word1 = calendarBinding.titleText
         val word2 = calendarBinding.dateText
@@ -49,7 +49,7 @@ backButtonPress()
         val button = calendarBinding.button
 
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-        model.title.observe(viewLifecycleOwner,Observer{
+        model.title.observe(viewLifecycleOwner, Observer {
             word1.text = it
 
         })
@@ -59,18 +59,18 @@ backButtonPress()
         model.date.observe(viewLifecycleOwner, Observer {
             word2.text = it
         })
-        model.time.observe(viewLifecycleOwner,Observer{
+        model.time.observe(viewLifecycleOwner, Observer {
             word4.text = it
         })
 
 
         button.setOnClickListener {
             val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
-                    .setData(CalendarContract.Events.CONTENT_URI)
-                    .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
-                    .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
 
-              startActivity(insertCalendarIntent)
+            startActivity(insertCalendarIntent)
         }
 
 
@@ -78,13 +78,13 @@ backButtonPress()
         return calendarBinding.root
     }
 
-    private fun backButtonPress(){
+    private fun backButtonPress() {
         val callback: OnBackPressedCallback =
-                object : OnBackPressedCallback(true) {
-                    override fun handleOnBackPressed() {
-                        findNavController().navigateUp()
-                    }
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigateUp()
                 }
+            }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         val parent = requireActivity() as ToggleState

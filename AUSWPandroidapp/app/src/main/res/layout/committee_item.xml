@@ -33,7 +33,7 @@
             android:layout_alignStart="@+id/committeeImageView"
             android:layout_below="@id/committeeImageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/committeeImageView"/>
+            app:layout_constraintTop_toBottomOf="@id/committeeImageView" />
 
         <TextView
             android:id="@+id/committeePosition"
@@ -42,7 +42,7 @@
             android:text="Position"
             app:layout_constraintTop_toBottomOf="@id/committeeName"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_below="@id/committeeName"/>
+            android:layout_below="@id/committeeName" />
 
 
         <TextView
@@ -53,10 +53,7 @@
             android:layout_alignStart="@id/committeePosition"
             android:layout_below="@id/committeePosition"
             app:layout_constraintTop_toBottomOf="@id/committeePosition"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-
-
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

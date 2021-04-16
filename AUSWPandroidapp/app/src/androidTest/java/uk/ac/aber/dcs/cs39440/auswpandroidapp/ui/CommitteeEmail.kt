@@ -3,8 +3,10 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
@@ -20,14 +22,14 @@ import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class bottomNavigationBarTest {
+class CommitteeEmail {
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun bottomNavigationBarTest() {
+    fun committeeEmail() {
         val bottomNavigationItemView = onView(
             allOf(
                 withId(R.id.navigation_Committee), withContentDescription("Committee"),
@@ -43,50 +45,16 @@ class bottomNavigationBarTest {
         )
         bottomNavigationItemView.perform(click())
 
-        val bottomNavigationItemView2 = onView(
+        val recyclerView = onView(
             allOf(
-                withId(R.id.navigation_Events), withContentDescription("Events"),
+                withId(R.id.committeeList),
                 childAtPosition(
-                    childAtPosition(
-                        withId(R.id.bottom_nav_view),
-                        0
-                    ),
-                    2
-                ),
-                isDisplayed()
-            )
-        )
-        bottomNavigationItemView2.perform(click())
-
-        val bottomNavigationItemView3 = onView(
-            allOf(
-                withId(R.id.navigation_Tracker), withContentDescription("Tracker"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.bottom_nav_view),
-                        0
-                    ),
-                    3
-                ),
-                isDisplayed()
-            )
-        )
-        bottomNavigationItemView3.perform(click())
-
-        val bottomNavigationItemView4 = onView(
-            allOf(
-                withId(R.id.navigation_home), withContentDescription("Home"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.bottom_nav_view),
-                        0
-                    ),
+                    withId(R.id.coordinator),
                     0
-                ),
-                isDisplayed()
+                )
             )
         )
-        bottomNavigationItemView4.perform(click())
+        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
     }
 
     private fun childAtPosition(

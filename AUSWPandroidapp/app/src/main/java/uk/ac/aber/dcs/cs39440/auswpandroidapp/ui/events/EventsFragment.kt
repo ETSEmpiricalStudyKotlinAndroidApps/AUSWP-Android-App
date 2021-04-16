@@ -7,27 +7,21 @@
  */
 
 
-
-
 package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-
-
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentEventsBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
@@ -39,30 +33,30 @@ class EventsFragment : Fragment() {
     private lateinit var eventAdapter: FirebaseRecyclerAdapter<Event, EventViewHolder>
     private var dataQuery = FirebaseDatabase.getInstance().reference.child("Events")
     private lateinit var eventsFragmentBinding: FragmentEventsBinding
-private lateinit var Smodel: SharedViewModel
+    private lateinit var Smodel: SharedViewModel
 
 
-override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         eventsFragmentBinding = FragmentEventsBinding.inflate(inflater, container, false)
 
-    eventAdapter = getAdapter()
-    (activity as MainActivity?)!!.navBar()
-    Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        eventAdapter = getAdapter()
+        (activity as MainActivity?)!!.navBar()
+        Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-    val recyclerView = eventsFragmentBinding.recyclerView
-    val linearLayoutManager = LinearLayoutManager(context)
-    recyclerView.apply {
-        setHasFixedSize(true)
-        layoutManager = LinearLayoutManager(context)
-        adapter = eventAdapter
+        val recyclerView = eventsFragmentBinding.recyclerView
+        val linearLayoutManager = LinearLayoutManager(context)
+        recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = eventAdapter
 
-    }
+        }
 
-    return eventsFragmentBinding.root
+        return eventsFragmentBinding.root
     }
 
     override fun onStart() {
@@ -75,26 +69,25 @@ override fun onCreateView(
         eventAdapter?.stopListening()
     }
 
-    private fun getAdapter(): FirebaseRecyclerAdapter<Event, EventViewHolder>{
+    private fun getAdapter(): FirebaseRecyclerAdapter<Event, EventViewHolder> {
         var clickListener: View.OnClickListener? = null
         val options = FirebaseRecyclerOptions.Builder<Event>()
-            .setLifecycleOwner(this)
-            .setQuery(dataQuery, Event::class.java)
-            .build()
+                .setLifecycleOwner(this)
+                .setQuery(dataQuery, Event::class.java)
+                .build()
 
-        return object: FirebaseRecyclerAdapter<Event, EventViewHolder>(options){
+        return object : FirebaseRecyclerAdapter<Event, EventViewHolder>(options) {
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
 
                 return EventViewHolder(
-                    layoutInflater.inflate(R.layout.event_item, parent, false)
+                        layoutInflater.inflate(R.layout.event_item, parent, false)
                 )
             }
 
             override fun onBindViewHolder(holder: EventViewHolder, position: Int, model: Event) {
                 holder.itemView.setOnClickListener {
-                    Log.i("TAG","Logged ${holder.title.text} + ${holder.time.text} + ${holder.date.text} + ${holder.location.text}")
-
+                    Log.i("TAG", "Logged ${holder.title.text} + ${holder.time.text} + ${holder.date.text} + ${holder.location.text}")
 
 
                     val title = holder.title.text
@@ -102,11 +95,10 @@ override fun onCreateView(
                     val location = holder.location.text
                     val time = holder.time.text
 
-                  Smodel.sendTitle(title.toString())
+                    Smodel.sendTitle(title.toString())
                     Smodel.sendDate(date.toString())
                     Smodel.sendLocation(location.toString())
                     Smodel.sendTime(time.toString())
-
 
 
                     val navController = findNavController()

@@ -12,11 +12,11 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "workouts")
-data class Workout (
-        @PrimaryKey(autoGenerate = true)
-        @NonNull
-        var id:Int =0,
-        var activity: String ="",
-        var date:String ="",
-        var set: String =""
-        )
+data class Workout(
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    var id: Int = 0,
+    var activity: String = "",
+    var date: String = "",
+    var set: String = ""
+)
