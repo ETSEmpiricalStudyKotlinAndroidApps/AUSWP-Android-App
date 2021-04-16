@@ -57,19 +57,23 @@ class RegisterFragment : Fragment() {
     }
 
     private fun createAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "Account Created Successfully")
-                    Toast.makeText(context, "Create account successfully", Toast.LENGTH_SHORT)
-                        .show()
-                    val navController = findNavController()
-                    navController.navigate(R.id.loginFragment)
-                } else {
-                    Log.w(TAG, "Authorisation Failed")
-                    Toast.makeText(context, "Authorisation failed", Toast.LENGTH_SHORT).show()
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "Account Created Successfully")
+                        Toast.makeText(context, "Create account successfully", Toast.LENGTH_SHORT)
+                            .show()
+                        val navController = findNavController()
+                        navController.navigate(R.id.loginFragment)
+                    } else {
+                        Log.w(TAG, "Authorisation Failed")
+                        Toast.makeText(context, "Authorisation failed", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
+        }else{
+            Toast.makeText(context, "Please ensure all text fields are filled in!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun backButtonPress() {

@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -91,6 +92,10 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
     }
 
     private fun insertWorkout() {
+        if (   addWorkoutFragmentBinding.nameEntry.text.toString().isNotEmpty()
+            &&  addWorkoutFragmentBinding.dateEntry.text.toString().isNotEmpty()
+            &&addWorkoutFragmentBinding.userStats.text.toString().isNotEmpty()){
+
         val workout = Workout(
                 0,
                 addWorkoutFragmentBinding.nameEntry.text.toString(),
@@ -98,8 +103,12 @@ class addWorkoutFragment : Fragment(), View.OnClickListener {
                 addWorkoutFragmentBinding.userStats.text.toString()
         )
         addWorkoutViewModel.insertWorkout(workout)
+            findNavController().navigateUp()
+        }else{
+            Toast.makeText(context, "You must enter data in all fields", Toast.LENGTH_SHORT).show()
+        }
 
-        findNavController().navigateUp()
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

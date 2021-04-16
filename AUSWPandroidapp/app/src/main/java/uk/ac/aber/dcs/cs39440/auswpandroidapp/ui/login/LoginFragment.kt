@@ -74,8 +74,9 @@ class LoginFragment : Fragment() {
 
     private fun signinUser(email: String, password: String) {
 
+        if (email.isNotEmpty() && password.isNotEmpty()) {
 
-        auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful) {
                         // Toast.makeText(context,"Welcome $email", Toast.LENGTH_SHORT).show()
@@ -84,9 +85,16 @@ class LoginFragment : Fragment() {
                         navController.navigate(R.id.navigation_home)
 
                     } else {
-                        Toast.makeText(context, "Something went wrong! Please try again", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            context,
+                            "Something went wrong! Please try again",
+                            Toast.LENGTH_SHORT
+                        )
                     }
                 }
+        }else{
+            Toast.makeText(context,"Please ensure both fields are filled in",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun backButtonPress() {

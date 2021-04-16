@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -65,9 +66,15 @@ class adminFragment : Fragment() {
         val time = adminFragmentBinding.eventTime.text.toString().trim()
         val location = adminFragmentBinding.eventLocation.text.toString().trim()
 
-        val event = Event(title, date, time, location)
 
-        dbRef.push().setValue(event)
+        if (title.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty() && location.isNotEmpty()){
+            val event = Event(title, date, time, location)
+
+            dbRef.push().setValue(event)
+        } else{
+            Toast.makeText(context, "Please ensure all text fields are filled in", Toast.LENGTH_SHORT).show()
+        }
+
 
 
     }
