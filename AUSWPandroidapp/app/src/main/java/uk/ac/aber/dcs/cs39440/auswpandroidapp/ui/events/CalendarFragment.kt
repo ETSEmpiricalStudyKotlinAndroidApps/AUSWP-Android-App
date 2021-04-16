@@ -17,12 +17,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentCalendarBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventViewHolder
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.EventsFragment
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
 private lateinit var calendarBinding: FragmentCalendarBinding
@@ -37,6 +40,7 @@ class CalendarFragment : Fragment() {
 
         calendarBinding = FragmentCalendarBinding.inflate(inflater,container, false)
 
+backButtonPress()
 
         val word1 = calendarBinding.titleText
         val word2 = calendarBinding.dateText
@@ -74,5 +78,16 @@ class CalendarFragment : Fragment() {
         return calendarBinding.root
     }
 
+    private fun backButtonPress(){
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        findNavController().navigateUp()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        val parent = requireActivity() as ToggleState
+        parent.setNavigationDrawer(false)
+    }
 }

@@ -64,6 +64,8 @@ checkUser()
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
+
+
         val drawer = binding.drawerLayout
         toggle = ActionBarDrawerToggle(
                 this,
@@ -76,8 +78,7 @@ checkUser()
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
+
 
         toggle.toolbarNavigationClickListener = View.OnClickListener {
             onBackPressed()
@@ -94,6 +95,8 @@ checkUser()
 
 
     }
+
+
 
     override fun onStart() {
         super.onStart()
@@ -181,7 +184,28 @@ checkUser()
             false
         }
     }
+        fun navBar(){
 
+            val toolbar = binding.toolbar
+            setSupportActionBar(toolbar)
+            val drawer = binding.drawerLayout
+            toggle = ActionBarDrawerToggle(
+                    this,
+                    drawer,
+                    toolbar,
+                    R.string.nav_open_drawer,
+                    R.string.nav_close_drawer
+            )
+
+            drawer.addDrawerListener(toggle)
+            toggle.syncState()
+
+
+
+            toggle.toolbarNavigationClickListener = View.OnClickListener {
+                onBackPressed()
+            }
+        }
 
 
     fun checkUser() {

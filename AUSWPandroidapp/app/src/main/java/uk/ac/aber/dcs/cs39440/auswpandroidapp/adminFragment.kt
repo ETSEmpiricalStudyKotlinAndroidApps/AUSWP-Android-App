@@ -7,11 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.customview.widget.Openable
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentAdminBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events.Event
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
 class adminFragment : Fragment() {
@@ -27,6 +32,8 @@ class adminFragment : Fragment() {
       val addEventBut = adminFragmentBinding.addEvent
         addEventBut.isClickable
 
+        backbuttonpress()
+
         addEventBut.setOnClickListener {
             addEvent()
             Log.d(TAG, "button pressed")
@@ -37,6 +44,18 @@ class adminFragment : Fragment() {
         return adminFragmentBinding.root
     }
 
+    private fun backbuttonpress(){
+        val callback: OnBackPressedCallback =
+                object: OnBackPressedCallback(true){
+                    override fun handleOnBackPressed() {
+                        findNavController().navigateUp()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+        val parent = requireActivity() as ToggleState
+        parent.setNavigationDrawer(false)
+    }
 
 
     private fun addEvent(){

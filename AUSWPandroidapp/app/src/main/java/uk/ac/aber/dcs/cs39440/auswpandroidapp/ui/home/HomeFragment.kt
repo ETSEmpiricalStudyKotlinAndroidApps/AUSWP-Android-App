@@ -70,6 +70,7 @@ class HomeFragment : Fragment() {
 
 
         (activity as MainActivity?)!!.checkUser()
+        (activity as MainActivity?)!!.navBar()
 
         return homeFragmentBinding.root
 

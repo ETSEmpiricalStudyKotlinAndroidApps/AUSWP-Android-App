@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.ktx.Firebase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentRegisterBinding
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 
 class RegisterFragment : Fragment() {
@@ -45,6 +47,7 @@ class RegisterFragment : Fragment() {
         register = registerFragmentBinding.button2
 
         Register()
+        backButtonPress()
 
         return registerFragmentBinding.root
     }
@@ -71,7 +74,18 @@ class RegisterFragment : Fragment() {
            }
     }
 
+    private fun backButtonPress(){
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        findNavController().navigateUp()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        val parent = requireActivity() as ToggleState
+        parent.setNavigationDrawer(false)
+    }
 }
 
 

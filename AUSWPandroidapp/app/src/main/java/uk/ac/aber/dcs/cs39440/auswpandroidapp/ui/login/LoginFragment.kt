@@ -21,6 +21,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -29,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentLoginBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.MainActivity
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
 
 class LoginFragment : Fragment() {
 
@@ -55,6 +57,8 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
         password = LoginFragmentBinding.password
         login = LoginFragmentBinding.Login
 
+
+        backButtonPress()
 
         register.isClickable
         login.isClickable
@@ -96,6 +100,19 @@ private lateinit var LoginFragmentBinding: FragmentLoginBinding
                     }
                 }
         }
+
+    private fun backButtonPress(){
+        val callback: OnBackPressedCallback =
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        findNavController().navigateUp()
+                    }
+                }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
+        val parent = requireActivity() as ToggleState
+        parent.setNavigationDrawer(false)
+    }
 
     fun Context.hideKeyboard(view: View){
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
