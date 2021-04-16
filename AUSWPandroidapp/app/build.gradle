@@ -1,11 +1,15 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'com.google.gms.google-services'
-    id 'kotlin-kapt'
-}
+
+    apply plugin: 'com.android.application'
+    apply plugin: 'kotlin-android'
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'kotlin-kapt'
+
 
 android {
+    signingConfigs {
+        'callum binner' {
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -19,6 +23,12 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,6 +37,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "testing"
+    productFlavors {
+        in_memory_database {
+            dimension "testing"
+        }
+        persistent_database {
+            dimension "testing"
+        }
+    }
+    android.variantFilter { variant ->
+        if (variant.buildType.name.equals('release')
+                && variant.getFlavors().get(0).name.equals('in_memory_database')) {
+            variant.setIgnore(true)
         }
     }
     compileOptions {
@@ -50,13 +75,13 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
     implementation 'androidx.room:room-runtime:2.2.6'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'com.google.firebase:firebase-auth:20.0.4'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation 'androidx.test:rules:1.4.0-alpha05'

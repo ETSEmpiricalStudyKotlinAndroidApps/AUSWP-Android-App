@@ -1,12 +1,4 @@
-/**
- * Room database implementation. Entity class used to define
- * table.
- * @author Callum Robert Binner
- * @version 1
- *
- */
-
-package uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource.tracker
+package uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource
 
 import android.content.Context
 import androidx.room.Database
@@ -14,28 +6,32 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.datasource.tracker.RoomDatabaseI
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.Workout
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.tracker.WorkoutDAO
 
-
 @Database(entities = [Workout::class], version = 1)
+abstract class WokroutInMemoryRoomDatabase: RoomDatabase(), RoomDatabaseI {
 
-abstract class WorkoutRoomDatabase : RoomDatabase() {
+    abstract override fun workoutDAO(): WorkoutDAO
 
-    abstract fun workoutDAO(): WorkoutDAO
 
-    companion object {
-        private var instance: WorkoutRoomDatabase? = null
+    override fun closeDb() {
+        instance?.close()
+        instance = null
+    }
+
+    companion object{
+        private var instance: WokroutInMemoryRoomDatabase? = null
         private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
-        fun getDatabase(context: Context): WorkoutRoomDatabase? {
-            synchronized(this) {
-                if (instance == null) {
+        fun getDatabase(context: Context):WokroutInMemoryRoomDatabase?{
+            synchronized(this){
+                if(instance == null){
                     instance =
-                        Room.databaseBuilder<WorkoutRoomDatabase>(
+                        Room.inMemoryDatabaseBuilder(
                             context.applicationContext,
-                            WorkoutRoomDatabase::class.java,
-                            "Workout_Database"
+                            WokroutInMemoryRoomDatabase::class.java
                         )
                             .allowMainThreadQueries()
 
@@ -46,6 +42,3 @@ abstract class WorkoutRoomDatabase : RoomDatabase() {
         }
     }
 }
-
-
-
