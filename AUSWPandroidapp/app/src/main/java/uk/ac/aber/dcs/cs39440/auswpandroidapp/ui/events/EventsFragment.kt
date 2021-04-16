@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.R
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentEventsBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
+import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.MainActivity
 
 class EventsFragment : Fragment() {
 
@@ -49,7 +50,7 @@ override fun onCreateView(
         eventsFragmentBinding = FragmentEventsBinding.inflate(inflater, container, false)
 
     eventAdapter = getAdapter()
-
+    (activity as MainActivity?)!!.navBar()
     Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
     val recyclerView = eventsFragmentBinding.recyclerView

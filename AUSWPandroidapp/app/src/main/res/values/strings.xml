@@ -69,11 +69,21 @@
     <string name="createAcount">Sign Up</string>
     <string name="register">Register Account</string>
     <string name="Logout">Logout</string>
-    <string name="admin">Admin</string>
+
     <string name="eventTitle">Event Title</string>
     <string name="eventTime">Event Time</string>
     <string name="eventDate">Event Date</string>
     <string name="eventLocation">Event Location</string>
     <string name="addEvent">Add Event</string>
+
+    <string name="Register">Register Your Account</string>
+    <string name="admin">Admin</string>
+    <string name="workoutStats">Workout Information</string>
+    <string name="wokroutName">Workout Name</string>
+    <string name="wokroutDate">Workout Date</string>
+    <string name="titleInfo">Your Event </string>
+    <string name="eventDateInfo">Date</string>
+    <string name="eventTimeInfo">Time</string>
+    <string name="eventLocationInfo">Location</string>
 
 </resources>

@@ -61,7 +61,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.LoginFragment"
-        android:label="fragment_login"
+        android:label="@string/login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -70,10 +70,10 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.RegisterFragment"
-        android:label="fragment_register" />
+        android:label="@string/Register" />
     <fragment
         android:id="@+id/adminFragment"
         android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.adminFragment"
-        android:label="fragment_admin"
+        android:label="@string/admin"
         tools:layout="@layout/fragment_admin" />
 </navigation>
