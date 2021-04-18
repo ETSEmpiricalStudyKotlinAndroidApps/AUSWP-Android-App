@@ -33,6 +33,11 @@ class adminFragment : Fragment() {
         val addEventBut = adminFragmentBinding.addEvent
         addEventBut.isClickable
 
+        val dateEdit = adminFragmentBinding.eventDate
+        dateEdit.setOnClickListener {
+            Toast.makeText(context,"Enter date in YYYY/MM/DD format", Toast.LENGTH_SHORT).show()
+        }
+
         backbuttonpress()
 
         addEventBut.setOnClickListener {
@@ -61,14 +66,14 @@ class adminFragment : Fragment() {
 
     private fun addEvent() {
         dbRef = Firebase.database.reference.child("Events")
-        val title = adminFragmentBinding.eventTitle.text.toString().trim()
-        val date = adminFragmentBinding.eventDate.text.toString().trim()
-        val time = adminFragmentBinding.eventTime.text.toString().trim()
-        val location = adminFragmentBinding.eventLocation.text.toString().trim()
+        val Title = adminFragmentBinding.eventTitle.text.toString().trim()
+        val Date = adminFragmentBinding.eventDate.text.toString().trim()
+        val Time = adminFragmentBinding.eventTime.text.toString().trim()
+        val Location = adminFragmentBinding.eventLocation.text.toString().trim()
 
 
-        if (title.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty() && location.isNotEmpty()){
-            val event = Event(title, date, time, location)
+        if (Title.isNotEmpty() && Date.isNotEmpty() && Time.isNotEmpty() && Location.isNotEmpty()){
+            val event = Event(Title, Date, Time, Location)
 
             dbRef.push().setValue(event)
         } else{

@@ -86,4 +86,6 @@
     <string name="eventTimeInfo">Time</string>
     <string name="eventLocationInfo">Location</string>
 
+    <string name="dateFormat">Event Date - YYYY/MM/DD</string>
+
 </resources>

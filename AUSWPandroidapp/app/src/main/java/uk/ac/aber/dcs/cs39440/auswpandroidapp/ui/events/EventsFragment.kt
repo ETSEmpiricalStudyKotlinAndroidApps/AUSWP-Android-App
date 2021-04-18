@@ -31,7 +31,7 @@ class EventsFragment : Fragment() {
 
 
     private lateinit var eventAdapter: FirebaseRecyclerAdapter<Event, EventViewHolder>
-    private var dataQuery = FirebaseDatabase.getInstance().reference.child("Events")
+    private var dataQuery = FirebaseDatabase.getInstance().reference.child("Events").orderByChild("date")
     private lateinit var eventsFragmentBinding: FragmentEventsBinding
     private lateinit var Smodel: SharedViewModel
 
