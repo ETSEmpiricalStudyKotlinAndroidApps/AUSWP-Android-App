@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 
         database = Firebase.database.reference.child("Events")
 
-        val myquery = database.limitToFirst(1)
+        val myquery = database.orderByChild("date").limitToFirst(1)
 
 
         val postListener = object : ValueEventListener {
