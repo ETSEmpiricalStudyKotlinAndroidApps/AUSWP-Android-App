@@ -70,6 +70,7 @@ class CalendarFragment : Fragment() {
                 .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
                 .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
 
+
             startActivity(insertCalendarIntent)
         }
 

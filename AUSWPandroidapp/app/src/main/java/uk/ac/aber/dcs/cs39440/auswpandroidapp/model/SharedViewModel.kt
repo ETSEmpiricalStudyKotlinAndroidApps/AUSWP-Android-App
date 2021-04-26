@@ -3,7 +3,7 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SharedViewModel : ViewModel() {
+class  SharedViewModel : ViewModel() {
     val title = MutableLiveData<String>()
     val date = MutableLiveData<String>()
     val location = MutableLiveData<String>()

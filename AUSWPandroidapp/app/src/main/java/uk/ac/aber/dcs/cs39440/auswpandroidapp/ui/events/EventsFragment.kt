@@ -42,11 +42,11 @@ class EventsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         eventsFragmentBinding = FragmentEventsBinding.inflate(inflater, container, false)
+        Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        (activity as MainActivity?)!!.navBar()
+
 
         eventAdapter = getAdapter()
-        (activity as MainActivity?)!!.navBar()
-        Smodel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-
         val recyclerView = eventsFragmentBinding.recyclerView
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.apply {
