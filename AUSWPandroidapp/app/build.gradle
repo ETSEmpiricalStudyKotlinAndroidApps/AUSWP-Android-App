@@ -8,6 +8,10 @@
 android {
     signingConfigs {
         'callum binner' {
+        storeFile file('C:\\Users\\callu\\Documents\\Uni\\Third Year\\Major Project\\ApplicationKeyStore.jks')
+            storePassword '&@S&822mLRMu68'
+            keyAlias 'AUSWPRelease'
+            keyPassword 'k6a8mBZK^u49%N'
         }
     }
     compileSdkVersion 30
@@ -31,6 +35,7 @@ android {
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.'callum binner'
     }
 
     buildTypes {

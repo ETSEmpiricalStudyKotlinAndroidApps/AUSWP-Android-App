@@ -73,7 +73,7 @@
         android:label="@string/Register" />
     <fragment
         android:id="@+id/adminFragment"
-        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.adminFragment"
+        android:name="uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.login.adminFragment"
         android:label="@string/admin"
         tools:layout="@layout/fragment_admin" />
 </navigation>
