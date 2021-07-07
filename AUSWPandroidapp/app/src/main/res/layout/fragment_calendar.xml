@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
-        android:text="@string/hello_blank_fragment"
+        android:text=""
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationInfo" />
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
-        android:text="@string/hello_blank_fragment"
+        android:text=""
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timeInfo" />
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
-        android:text="@string/hello_blank_fragment"
+        android:text=""
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateInfo" />
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="24dp"
-        android:text="@string/hello_blank_fragment"
+        android:text=""
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleInfo" />

@@ -13,6 +13,7 @@ package uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.events
 import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import androidx.navigation.fragment.findNavController
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.databinding.FragmentCalendarBinding
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.model.SharedViewModel
 import uk.ac.aber.dcs.cs39440.auswpandroidapp.ui.tracker.ToggleState
+import java.util.*
 
 
 private lateinit var calendarBinding: FragmentCalendarBinding
@@ -42,6 +44,9 @@ class CalendarFragment : Fragment() {
 
         backButtonPress()
 
+        var delimiter = "/"
+        var delimiter2 =":"
+        var delimeter3 ="-"
         val word1 = calendarBinding.titleText
         val word2 = calendarBinding.dateText
         val word3 = calendarBinding.locationText
@@ -58,17 +63,60 @@ class CalendarFragment : Fragment() {
         })
         model.date.observe(viewLifecycleOwner, Observer {
             word2.text = it
+
         })
         model.time.observe(viewLifecycleOwner, Observer {
             word4.text = it
+
         })
 
+
+        val date = model.date.value.toString().split(delimiter)
+        val year = date[0].toInt()
+        val month = date[1].toInt()-1
+        val day = date [2].toInt()
+
+
+
+
+        val time = model.time.value.toString().split(delimiter2,delimeter3)
+        val startHour = time[0].toInt()
+        val startMin = time[1].toInt()
+        val endHour = time[2].toInt()
+        val endMinute = time[3].toInt()
+
+
+   Log.i("TAG", "Logged ${date[0]} + ${date[1]} + ${date[2]} ")
+       Log.i("TAG", "Logged ${time[0]} + ${time[1]} + ${time[2]} + ${time[3]} ")
+
+
+
+
+
+
+
+
+
+
+
+        val startMillis: Long = Calendar.getInstance().run {
+            set(year, month, day, startHour, startMin)
+            timeInMillis
+        }
+
+        val endMillis: Long = Calendar.getInstance().run {
+            set(year, month, day, endHour, endMinute)
+            timeInMillis
+        }
 
         button.setOnClickListener {
             val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.Events.TITLE, word1.text.toString())
                 .putExtra(CalendarContract.Events.EVENT_LOCATION, word3.text.toString())
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startMillis)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endMillis)
+
 
 
             startActivity(insertCalendarIntent)
